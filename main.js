@@ -13,25 +13,34 @@
   hour = updateTime(hour);
   min = updateTime(min);
   sec = updateTime(sec);
-  document.querySelector('.clock-display').innerHTML = hour + " : " + min + " : " + sec;
+  numtime = [hour, min, sec].join("");
+  hextime = '#' + numtime.toString();
+  time = hour + " : " + min + " : " + sec;
+  let test = document.querySelector('.clock-display');
+  test.addEventListener("mouseover", function( event ) {
+  // highlight the mouseenter target
+  event.target.innerText = time;})
+
+
+
+
   //adding time to the div
+  document.querySelector('.clock-display').innerHTML = hextime;
     var t = setTimeout(function(){ currentTime() }, 1000);
     //setting timer
     function percentage(num){
-      return (num/60).toString() + "em";
+      return (num/60).toString() * 4 + "em";
     }
-
     var progressBarFull = document.querySelector('.clock-progress-bar');
    progressBarFull.style.width = percentage(sec);
    //needs to return the sec percent as a data type css can read
-
   // Using the percent above, dynamically modify the length of the timer bar
-  // // document.querySelector('.clock-progress-bar').innerHTML =
-    console.log(percentage(sec));
-    // document.getElementsByClassName('clock-progress-bar').innerHTML = percentage(sec);
+  var hexback = document.querySelector('.clock-face');
+ hexback.style.background = hextime;
 
 
 }
+
 function updateTime(x) {
   if (x < 10) {
     return "0" + x;
@@ -41,7 +50,8 @@ function updateTime(x) {
   }
 }
 
-currentTime(); /* calling currentTime() function to initiate the process */
+currentTime();
+ /* calling currentTime() function to initiate the process */
 
 
 //console.log the percentage of a minute that the current seconds represents (e.g., if 30 seconds have elapsed, console.log 0.5)
