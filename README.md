@@ -60,3 +60,4 @@ A repo containing at least:
 Watch [Head First JavaScript](https://www.youtube.com/playlist?list=PL055Epbe6d5ZMPV1biOmaI7oCc7nEMxh4) and [JavaScript Basics](https://teamtreehouse.com/library/javascript-basics)
 
 Read [Values](http://eloquentjavascript.net/01_values.html#h_sVZPaxUSy/), [Numbers](http://eloquentjavascript.net/01_values.html#h_flOCH3CuFg), [Arithmetic](http://eloquentjavascript.net/01_values.html#h_RfBT3HMnYs), [Variables](http://eloquentjavascript.net/02_program_structure.html#h_rAGNsfewCX), [Defining A Function](http://eloquentjavascript.net/03_functions.html#h_tqLFw/oazr), [Event Handlers](http://eloquentjavascript.net/14_event.html#h_HQoLxG2r2l) and [Events and DOM Nodes](http://eloquentjavascript.net/14_event.html#h_Kx1VwAV7ei)
+# sarahclock
