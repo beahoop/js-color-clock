@@ -1,64 +1,35 @@
-// console.log(new Date().getHours().getMinutes().getSeconds());
+const clock = document.querySelector('.clock');
 
-// setInterval(function(){ console.log(new Date()); }, 1000);
-//I want the cosole log to only give back just the time
-// then i want to set it to a Variables
-// the var should replace 00:00:00 in the html
-
-  function currentTime() {
-  var date = new Date(); /* creating object of Date class */
-  var hour = date.getHours();
-  var min = date.getMinutes();
-  var sec = date.getSeconds();
-  hour = updateTime(hour);
-  min = updateTime(min);
-  sec = updateTime(sec);
-  numtime = [hour, min, sec].join("");
-  hextime = '#' + numtime.toString();
-  time = hour + " : " + min + " : " + sec;
-  let test = document.querySelector('.clock-display');
-  test.addEventListener("mouseover", function( event ) {
-  // highlight the mouseenter target
-  event.target.innerText = time;})
+let isHovering = false;
+const clockDisplay = document.querySelector('.clock-display')
+const progressBar = document.querySelector('.clock-progress-bar')
 
 
+function  setDate(){
+const now = new Date();
+let seconds, hour, mins;
+
+if(isHovering){
+  seconds = ('0' + now.getSeconds().toString(16)).slice(-2);
+  mintues = ('0' + now.getMinutes().toString(16)).slice(-2);
+  hour = ('0' + now.getHours().toString(16)).slice(-2);
+  clock.style.backgroundColor = `#${hour}${mintues}${seconds}`
+} else {
+  seconds = ('0' + now.getSeconds()).slice(-2);
+  mintues = ('0' + now.getMinutes()).slice(-2);
+  hour = ('0' + now.getHours()).slice(-2);
+
+}
+console.log(isHovering);
 
 
-  //adding time to the div
-  document.querySelector('.clock-display').innerHTML = hextime;
-    var t = setTimeout(function(){ currentTime() }, 1000);
-    //setting timer
-    function percentage(num){
-      return (num/60).toString() * 4 + "em";
-    }
-    var progressBarFull = document.querySelector('.clock-progress-bar');
-   progressBarFull.style.width = percentage(sec);
-   //needs to return the sec percent as a data type css can read
-  // Using the percent above, dynamically modify the length of the timer bar
-  var hexback = document.querySelector('.clock-face');
- hexback.style.background = hextime;
+clockDisplay.innerHTML = `${hour}:${mintues}:${seconds}`
+progressBar.style.width = `${seconds/60 *14}rem`;
 
 
 }
-
-function updateTime(x) {
-  if (x < 10) {
-    return "0" + x;
-  }
-  else {
-    return x;
-  }
-}
-
-currentTime();
- /* calling currentTime() function to initiate the process */
+clock.addEventListener('mouseover', () => isHovering = true);
+clock.addEventListener('mouseout', ()=> isHovering = false);
 
 
-//console.log the percentage of a minute that the current seconds represents (e.g., if 30 seconds have elapsed, console.log 0.5)
-
-
-
-
-//are you hovering, then update when you are hovering
-// am i hovering, if I am hovering give me the time, if i am not hovering give me the hexcode
-//mouseover, mouseout
+setInterval(setDate, 1000);
